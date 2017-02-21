@@ -166,21 +166,17 @@
             }).mouseleave(function () {
                 $(this).css("top", '-28%')
             })
-
-            $('#switchSingle').on("change",function () {
-                var status=$(this).attr('checked')
-                if(status){
+            
+              $('[name=my-switch]').on('change',function () {
+                var status=$(this).is(':checked')
+               if(status){
                     $('#date2').hide()
-                    $('#query label').css('left','22%')
-                    $(this).attr('checked',false)
-                }else {
-                    $('#date2').show()
-                    $('#query label').css('left','33%')
-                    $(this).attr('checked','checked')
-                }
+               }else {
+                   $('#date2').show()
+               }
             })
 
-            $("[name='my-checkbox']").bootstrapSwitch();
+           
         })
     </script>
 
@@ -221,6 +217,7 @@
                 </div>
             </form>
 
+          <label class="checkbox-inline" style="position: absolute;top: 30%;right: 10%"><input name='my-switch' type="checkbox" >点我进行</label>
             <div class="switch" data-on="info" data-off="success">
                 <input type="checkbox" checked />
 
