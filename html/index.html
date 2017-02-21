@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>echart Demo</title>
+    <script src="../js/jquery-3.1.1.js"></script>
+    <script src="../js/echarts.js"></script>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/datepicker3.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap-date/css/bootstrap-datetimepicker.min.css">
+    <script src="../bootstrap-date/js/bootstrap-datetimepicker.js"></script>
+    <!--[if lt IE 9]>
+    <script src="../js/html5shiv.js"></script>
+    <script src="../js/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#echart-logo').mouseover(function () {
+                $(this).attr("class",'bg2')
+            }).mouseleave(function () {
+                $(this).attr("class",'bg1')
+            })
+          //初始化日历
+            $('.form_date').datetimepicker({
+                format : 'yyyy-mm-dd',
+                language : 'zh-CN',
+                startView : 2,
+                minView : 2,
+                autoclose : 1
+            });
+            var map={
+                "count":"单日用户数",
+                "passRate":"通过率",
+            }
+
+         var myChart=echarts.init(document.getElementById("chart"),"macarons");
+
+            var option4={
+                "calculable": true,
+                "tooltip": {
+                    "trigger": "axis"
+                },
+                "legend": {
+                    "data": [
+                        "样本数",
+                        "正样本数比例"
+                    ]
+                },
+                "xAxis": [
+                    {
+                        "type": "category",
+                        "name": "预测分",
+                        "data": [
+                            "0",
+                            "0.1",
+                            "0.2",
+                            "0.3",
+                            "0.4",
+                            "0.5",
+                            "0.6",
+                            "0.7",
+                            "0.8",
+                            "0.9"
+                        ]
+                    }
+                ],
+                "yAxis": [
+                    {
+                        "type": "value",
+                        "name": "样本数",
+                        "axisLabel": {}
+                    },
+                    {
+                        "type": "value",
+                        "name": "正样本数比例",
+                        "axisLabel": {}
+                    }
+                ],
+                "series": [
+                    {
+                        "yAxisIndex": 0,
+                        "name": "样本数",
+                        "type": "bar",
+                        "data": [
+                            "36814",
+                            "23",
+                            "173",
+                            "235",
+                            "428",
+                            "2402",
+                            "3154",
+                            "13798",
+                            "5670",
+                            "92738"
+                        ]
+                    },
+                    {
+                        "smooth": true,
+                        "yAxisIndex": 1,
+                        "name": "正样本数比例",
+                        "type": "line",
+                        "itemStyle": {
+                            "normal": {
+                                "lineStyle": {
+                                    "shadowColor": "rgba(0,0,0,0.6)"
+                                }
+                            }
+                        },
+                        "data": [
+                            "0.008094746563807247",
+                            "0.43478260869565216",
+                            "0.6127167630057804",
+                            "0.6978723404255319",
+                            "0.7289719626168224",
+                            "0.6457119067443797",
+                            "0.6433100824350032",
+                            "0.9475286273372953",
+                            "0.7850088183421516",
+                            "0.9594664538808255"
+                        ]
+                    }
+                ]
+            }
+            $('#homeNav')
+            myChart.setOption(option4);
+        })
+
+        function getHomeName() {
+
+
+        }
+
+
+    </script>
+    <script src="../js/macarons.js"></script>
+
+    <script type="text/javascript">
+
+
+    </script>
+    <style type="text/css">
+    .bg1 {
+        background: url(../image/echarts-logo2.png);
+        filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+        -moz-background-size: 100% 100%;
+        background-size: 100% 100%;
+        height: 160px;
+        width: 142px;
+        right: 8%;
+        position: fixed;
+        bottom: 15%;
+        z-index: 1;
+    }
+</style>
+
+    <script type="text/javascript">
+
+
+        $(function () {
+            $('#echarts-logo').mousemove(function () {
+                $(this).css("top", '-32%')
+            }).mouseleave(function () {
+                $(this).css("top", '-28%')
+            })
+
+            $('#switchSingle').on("change",function () {
+                var status=$(this).attr('checked')
+                if(status){
+                    $('#date2').hide()
+                    $('#query label').css('left','22%')
+                    $(this).attr('checked',false)
+                }else {
+                    $('#date2').show()
+                    $('#query label').css('left','33%')
+                    $(this).attr('checked','checked')
+                }
+            })
+
+            $("[name='my-checkbox']").bootstrapSwitch();
+        })
+    </script>
+
+</head>
+<body>
+
+<div class="container" style="width: 100%;height: 900px;position: relative">
+
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <ul class="nav menu">
+            <li ><a   href="index.html"><span style="font-size: 18px;color: black">AntiCheat /&nbsp;</span><span style="color: #FF0000;font-size: 16px">In 4399</span></a></li>
+            <li  class="active btn-info-"><a id='singleDay' href="index.html"><span class="glyphicon glyphicon-dashboard"></span> 单日用户数</a></li>
+            <li><a href="index.html"><span class="glyphicon glyphicon-dashboard"></span> 用户分布</a></li>
+            <li><a href="charts.html"><span class="glyphicon glyphicon-stats"></span> 拟合结果</a></li>
+            <li><a href="widgets.html"><span class="glyphicon glyphicon-th"></span>平均通过率</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><a href="login.html"><span class="glyphicon glyphicon-user"></span> Login Page</a></li>
+        </ul>
+        <div class="attribution">Template by <a href="http://www.medialoot.com/item/lumino-admin-bootstrap-template/">Medialoot</a></div>
+    </div><!--/.sidebar-->
+
+
+    <div id="chartdiv" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main container" >
+        <div class="row" >
+            <ol class="breadcrumb">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li id ='homeNav' class="active">当日</li>
+            </ol>
+        </div><!--/.row-->
+
+        <!-- datetimepicker start-->
+        <div class="panel-body" id="query" style="position: relative">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input size="16" type="text" readonly class="form_date form-control"  id="date" value="${date}">
+                    <input size="16" type="text" readonly class="form_date form-control" id="date2" value="${dateNext}">
+                    &nbsp; <button type="button" id="searchBtn" class="btn btn-info">点我进行查询哦！</button>
+                </div>
+            </form>
+
+            <div class="switch" data-on="info" data-off="success">
+                <input type="checkbox" checked />
+
+            </div>
+
+        </div>
+        <!-- datetimepicker end-->
+
+
+        <div id="chart" style="width: 100%; height: 400px;margin-top: 100px"></div>
+
+    </div>
+
+    <footer style="width: 98%;height: 25%;background-color: #191970;position: absolute;bottom: 0">
+        <div class="bg1" id="echarts-logo" style="width: 220px;height:248px;position: absolute;top: -28%;right: 10%"></div>
+        <p style="position: absolute;bottom: 10%;left: 50%;color: #9acfea">Copyright &copy; 2017 四三九九网络有限公司
+            | Designed by <a href="#" target="_parent">4399&nbsp;&nbsp;&nbsp;</a></p>
+    </footer>
+
+</div>
+
+
+
+
+</body>
+</html>

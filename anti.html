@@ -1,0 +1,37 @@
+<div style="margin-top: -50px">
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+        <form role="search">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+        </form>
+        <ul class="nav menu">
+            <li  class="active"><a href="javaScript:getChart('count')"><span class="glyphicon glyphicon-dashboard"></span> 单日用户数</a></li>
+            <li><a href="javaScript:getChartByCount('TwoDayCountLine')"><span class="glyphicon glyphicon-dashboard"></span> 多日用户数对比</a></li>
+            <li><a href="javaScript:getChart('passRate')"><span class="glyphicon glyphicon-th"></span> 通过率</a></li>
+            <li><a href="javaScript:getChart2Y('doubleY')"><span class="glyphicon glyphicon-stats"></span> 拟合结果</a></li>
+        </ul>
+    </div><!--/.sidebar-->
+
+
+    <div id="chartdiv" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" >
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+                <li class="active" id='homeNav'></li>
+            </ol>
+        </div><!--/.row-->
+        <!-- datetimepicker start-->
+        <div class="panel-body" id="query">
+            <form class="form-inline">
+                <div class="form-group">
+                    <input size="16" type="text" readonly class="form_date form-control" id="date" value="${date}">
+                    <input size="16" type="text" readonly class="form_date form-control" id="date2" value="${dateNext}">
+                    &nbsp; <button type="button" id="searchBtn" class="btn btn-success">点我进行查询哦！</button>
+                </div>
+            </form>
+        </div>
+        <!-- datetimepicker end-->
+        <div id="chart" style="width: 100%; height: 400px;margin-top: 100px"></div>
+    </div>
+</div>
